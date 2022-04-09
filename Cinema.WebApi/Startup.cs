@@ -1,4 +1,8 @@
-using Cinema.WebApi.Filters;
+using Cinema.Entities;
+using Cinema.IRepositories;
+using Cinema.IServices;
+using Cinema.Repositories;
+using Cinema.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,10 +12,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Cinema.WebApi
 {
@@ -28,17 +28,18 @@ namespace Cinema.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers(options =>
-            {
-                options.Filters.Add<LogFilter>();
-                options.Filters.Add<ResponseFilter>();
+            services.AddControllers();
 
-            });
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddSingleton(new DbOptions() { ConnectionString = connectionString });
+
+            services.AddTransient<IFilmService, FilmService>();
+            services.AddTransient<IFilmRepository, FilmRepository>();
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cinema.WebApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });
             });
-            services.AddAuthentication();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,14 +49,12 @@ namespace Cinema.WebApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cinema.WebApi v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication1 v1"));
             }
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthentication();
 
             app.UseAuthorization();
 
