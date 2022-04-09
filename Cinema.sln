@@ -21,15 +21,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.IRepositories", "Cin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.IServices", "Cinema.IServices\Cinema.IServices.csproj", "{5EBE1514-9DB0-47E2-B84E-EADE59762CB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.FakeRepositories", "Cinema.FakeRepositories\Cinema.FakeRepositories.csproj", "{B6430FBC-F974-4C2A-82FF-42380E6F3C81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.FakeRepositories", "Cinema.FakeRepositories\Cinema.FakeRepositories.csproj", "{B6430FBC-F974-4C2A-82FF-42380E6F3C81}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{32BD8A99-A965-431A-A83A-D97D859262A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{C632269D-126E-416A-A459-B5C25BB0C63F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{C632269D-126E-416A-A459-B5C25BB0C63F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciname.Entities", "Ciname.Entities\Ciname.Entities.csproj", "{A6A46B9E-0DA1-43D3-B6DF-AF012373CF61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Entities", "Ciname.Entities\Cinema.Entities.csproj", "{A6A46B9E-0DA1-43D3-B6DF-AF012373CF61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Dto", "Cinema.Dto\Cinema.Dto.csproj", "{71D532E6-99CC-4256-BBA2-D9661D9923B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Dto", "Cinema.Dto\Cinema.Dto.csproj", "{71D532E6-99CC-4256-BBA2-D9661D9923B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
