@@ -20,7 +20,7 @@ namespace Cinema.WebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            Film film = _filmService.GetBook(id);
+            Film film = _filmService.GetFilm(id);
             return Ok(film);
         }
 

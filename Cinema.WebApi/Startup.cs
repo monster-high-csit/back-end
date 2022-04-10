@@ -38,10 +38,13 @@ namespace Cinema.WebApi
             services.AddSingleton(mapper);
 
             services.AddTransient<IFilmService, FilmService>();
-            services.AddTransient<IFilmRepository, FilmRepository>();
-
             services.AddTransient<IActorService, ActorService>();
+
+            services.AddTransient<IFilmRepository, FilmRepository>();
             services.AddTransient<IActorRepository, ActorRepository>();
+            services.AddTransient<IFilmMakersRepository, FilmMakersRepository>();
+            services.AddTransient<IFilmStudioRepository, FilmStudioRepository>();
+            services.AddTransient<IGenreRepository, GenreRepository>();
 
             services.AddSwaggerGen(c =>
             {
