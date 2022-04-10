@@ -1,4 +1,5 @@
-﻿using Cinema.Entities;
+﻿using Cinema.Dto;
+using Cinema.Entities;
 using Cinema.IRepositories;
 using Dapper;
 using Microsoft.Extensions.Logging;
@@ -18,7 +19,18 @@ namespace Cinema.Repositories
             _logger = logger;
             _dbOptions = dbOptions;
         }
-        public Film GetBook(int id)
+
+        public int DeleteFilm(int id)
+        {
+            using (SqlConnection db = new SqlConnection(_dbOptions.ConnectionString))
+            {
+                var command = new SqlCommand($"DELETE FROM dbo.Films WHERE FilmID = {id}", db);
+                db.Open();
+                return (int)command.ExecuteNonQuery();
+            }
+        }
+
+        public FilmDto GetBook(int id)
         {
             using (IDbConnection db = new SqlConnection(_dbOptions.ConnectionString))
             {
@@ -35,7 +47,7 @@ namespace Cinema.Repositories
                             "f.Rating, "+
                             "f.Duration "+
                             "FROM Films AS f WHERE FilmID = @FilmID";
-                return db.Query<Film>(query, param).First();
+                return db.Query<FilmDto>(query, param).First();
             }
         }
     }

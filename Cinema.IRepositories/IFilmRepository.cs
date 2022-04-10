@@ -1,9 +1,11 @@
-﻿using Cinema.Entities;
+﻿using Cinema.Dto;
 
 namespace Cinema.IRepositories
 {
     public interface IFilmRepository
     {
-        Film GetBook(int id);
+        FilmDto GetBook(int id);
+
+        int DeleteFilm(int id);
     }
 }

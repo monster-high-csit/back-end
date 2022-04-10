@@ -1,3 +1,4 @@
+using AutoMapper;
 using Cinema.Entities;
 using Cinema.IRepositories;
 using Cinema.IServices;
@@ -31,10 +32,19 @@ namespace Cinema.WebApi
             services.AddControllers();
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            var mappingConfig = new MapperConfiguration(ms => {
+                ms.AddProfile(new MappingProfile());
+            });
+            IMapper mapper = mappingConfig.CreateMapper();
+
             services.AddSingleton(new DbOptions() { ConnectionString = connectionString });
+            services.AddSingleton(mapper);
 
             services.AddTransient<IFilmService, FilmService>();
             services.AddTransient<IFilmRepository, FilmRepository>();
+
+            services.AddTransient<IActorService, ActorService>();
+            services.AddTransient<IActorRepository, ActorRepository>();
 
             services.AddSwaggerGen(c =>
             {
