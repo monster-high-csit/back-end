@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cinema.Entities\Cinema.Entities.csproj" />
     <ProjectReference Include="..\Cinema.IRepositories\Cinema.IRepositories.csproj" />
     <ProjectReference Include="..\Cinema.IServices\Cinema.IServices.csproj" />
   </ItemGroup>

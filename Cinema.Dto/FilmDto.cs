@@ -1,5 +1,4 @@
-﻿
-namespace Cinema.Dto
+﻿namespace Cinema.Dto
 {
     public class FilmDto
     {

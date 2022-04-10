@@ -27,7 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{32BD8A99
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{C632269D-126E-416A-A459-B5C25BB0C63F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Entities", "Ciname.Entities\Cinema.Entities.csproj", "{A6A46B9E-0DA1-43D3-B6DF-AF012373CF61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Entities", "Cinema.Entities\Cinema.Entities.csproj", "{A6A46B9E-0DA1-43D3-B6DF-AF012373CF61}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Dto", "Cinema.Dto\Cinema.Dto.csproj", "{71D532E6-99CC-4256-BBA2-D9661D9923B4}"
 EndProject
