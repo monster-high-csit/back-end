@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ciname.Entities\Cinema.Entities.csproj" />
+    <ProjectReference Include="..\Cinema.Dto\Cinema.Dto.csproj" />
   </ItemGroup>
 
 </Project>

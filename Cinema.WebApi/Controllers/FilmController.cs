@@ -18,12 +18,6 @@ namespace Cinema.WebApi.Controllers
             _filmService = filmService;
         }
 
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -31,19 +25,15 @@ namespace Cinema.WebApi.Controllers
             return Ok(film);
         }
 
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            int result = _filmService.DeleteFilm(id);
+            if (result == 0)
+            {
+                return BadRequest("ERROR! Film isn't deleted");
+            }
+            return Ok();
         }
     }
 }
