@@ -34,5 +34,19 @@ namespace Cinema.WebApi.Controllers
             }
             return Ok();
         }
+
+        [HttpPost]
+        public IActionResult Create(Film film)
+        {
+            try
+            {
+                _filmService.CreateFilm(film);
+                return Ok();
+            }
+            catch
+            {
+                return Problem();
+            }
+        }
     }
 }

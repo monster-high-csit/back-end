@@ -3,9 +3,9 @@
     public class FilmDto
     {
         public int FilmID { get; set; }
-        public string Genre { get; set; }
-        public string FilmStudio { get; set; }
-        public string Filmmaker { get; set; }
+        public int GenreID { get; set; }
+        public int FilmStudioID { get; set; }
+        public int FilmmakerID { get; set; }
         public string Name { get; set; }
         public byte AgeLimit { get; set; }
         public string Description { get; set; }

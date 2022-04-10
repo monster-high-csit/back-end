@@ -7,5 +7,6 @@ namespace Cinema.IRepositories
         FilmDto GetBook(int id);
 
         int DeleteFilm(int id);
+        void CreateFilm(FilmDto filmDto);
     }
 }

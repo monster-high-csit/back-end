@@ -6,5 +6,6 @@ namespace Cinema.IServices
     {
         Film GetBook(int id);
         int DeleteFilm(int id);
+        void CreateFilm(Film film);
     }
 }
