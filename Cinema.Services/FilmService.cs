@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Cinema.Dto;
 using Cinema.Entities;
 using Cinema.IRepositories;
 using Cinema.IServices;
@@ -30,14 +31,23 @@ namespace Cinema.Services
 
         public Film GetBook(int id)
         {
-            List<Film> film = new List<Film>();
-            film.Add(_mapper.Map<Film>(_filmRepository.GetBook(id)));
-            var actorsFilm = _actorRepository.GetActorByFilmIDs(film.Select(f => f.FilmID));
-            foreach(var flm in film)
+            var film = _mapper.Map<Film>(_filmRepository.GetBook(id));
+            var actorsFilm = _actorRepository.GetActorByFilmIDs(new List<int>(){ film.FilmID });
+            film.actors = actorsFilm;
+            return film;
+        }
+
+        public void CreateFilm(Film film)
+        {
+            try
             {
-                flm.actors = actorsFilm.Where(a => a.FilmID == flm.FilmID).ToList();
+                FilmDto filmDto = _mapper.Map<FilmDto>(film);
+                _filmRepository.CreateFilm(filmDto);
             }
-            return film[0];
+            catch
+            {
+                
+            }
         }
     }
 }

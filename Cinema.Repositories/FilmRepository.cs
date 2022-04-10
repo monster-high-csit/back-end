@@ -20,6 +20,34 @@ namespace Cinema.Repositories
             _dbOptions = dbOptions;
         }
 
+        public void CreateFilm(FilmDto filmDto)
+        {
+            using (IDbConnection db = new SqlConnection(_dbOptions.ConnectionString))
+            {
+                var query = "INSERT INTO [dbo].[Films] " +
+                            "([GenreID], " +
+                            "[StudioID], " +
+                            "[FilmmakerID], " +
+                            "[Name], " +
+                            "[AgeLimit], " +
+                            "[Description], " +
+                            "[ShortDescription], " +
+                            "[Rating], " +
+                            "[Duration]) " +
+                            "VALUES " +
+                            "(@GenreID, " +
+                            "@StudioID, " +
+                            "@FilmmakerID, " +
+                            "@Name, " +
+                            "@AgeLimit, " +
+                            "@Description, " +
+                            "@ShortDescription, " +
+                            "@Rating," +
+                            "@Duration)";
+                db.Query(query, filmDto);
+            }
+        }
+
         public int DeleteFilm(int id)
         {
             using (SqlConnection db = new SqlConnection(_dbOptions.ConnectionString))
