@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ciname.Entities\Cinema.Entities.csproj" />
+    <ProjectReference Include="..\Cinema.Entities\Cinema.Entities.csproj" />
   </ItemGroup>
 
 </Project>

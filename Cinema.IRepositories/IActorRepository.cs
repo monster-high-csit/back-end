@@ -1,5 +1,4 @@
 ﻿using Cinema.Entities;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Cinema.IRepositories

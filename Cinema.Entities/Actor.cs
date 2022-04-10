@@ -1,5 +1,4 @@
-﻿
-namespace Cinema.Entities
+﻿namespace Cinema.Entities
 {
     public class Actor
     {
