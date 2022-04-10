@@ -58,17 +58,17 @@ namespace Cinema.Repositories
             }
         }
 
-        public FilmDto GetBook(int id)
+        public FilmDto GetFilm(int id)
         {
             using (IDbConnection db = new SqlConnection(_dbOptions.ConnectionString))
             {
                 var param = new DynamicParameters();
                 param.Add("FilmID", id);
-                var query = "SELECT f.FilmID,"+
+                var query = "SELECT f.FilmID, "+
                             "f.Name, " +
-                            "(SELECT g.Name FROM dbo.Genres AS g WHERE GenreID = f.GenreID) AS Genre, " +
-                            "(SELECT fs.Name FROM dbo.FilmStudios AS fs WHERE StudioID = f.StudioID) AS FilmStudio, " +
-                            "(SELECT CONCAT(fm.Name, ' ', fm.Surname) FROM dbo.Filmmakers AS fm WHERE FilmmakerID = f.FilmmakerID) AS Filmmaker, " +
+                            "f.GenreID, " +
+                            "f.StudioID AS FilmStudioID, " +
+                            "f.FilmmakerID, " +
                             "f.AgeLimit, " +
                             "f.Description, "+
                             "f.ShortDescription, "+

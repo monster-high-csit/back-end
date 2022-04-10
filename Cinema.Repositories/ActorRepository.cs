@@ -19,6 +19,12 @@ namespace Cinema.Repositories
             _logger = logger;
             _dbOptions = dbOptions;
         }
+
+        public int Add(Actor actor)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Actor GetActor(int id)
         {
             using (IDbConnection db = new SqlConnection(_dbOptions.ConnectionString))
