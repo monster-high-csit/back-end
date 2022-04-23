@@ -42,7 +42,7 @@ namespace Cinema.Services
             var filmDto = _filmRepository.GetFilm(id);
             var film = _mapper.Map<Film>(filmDto);
             var filmMaker = _filmMakersRepository.GetFilmMakerByID(filmDto.FilmmakerID);
-            film.Filmmaker = $"{filmMaker.SurName} {filmMaker.Name[0]}.";
+            film.Filmmaker = $"{filmMaker.Surname} {filmMaker.Name[0]}.";
             film.Genre = _genreRepository.GetGenreByID(filmDto.GenreID).Name;
             film.FilmStudio = _filmStudioRepository.GetFilmStudioByID(filmDto.FilmStudioID).Name;
             var actorsFilm = _actorRepository.GetActorByFilmIDs(new List<int>(){ film.FilmID });
@@ -61,6 +61,25 @@ namespace Cinema.Services
             {
                 throw new Exception();
             }
+        }
+
+        public List<Film> GetFilms()
+        {
+            var filmsDto = _filmRepository.GetFilms();
+            List<Film> films = new List<Film>();
+
+            for (int i = 0; i < filmsDto.Count; i++)
+            {
+                films.Add(_mapper.Map<Film>(filmsDto[i]));
+                var filmMaker = _filmMakersRepository.GetFilmMakerByID(filmsDto[i].FilmmakerID);
+                films[i].Filmmaker = $"{filmMaker.Surname} {filmMaker.Name[0]}.";
+                films[i].Genre = _genreRepository.GetGenreByID(filmsDto[i].GenreID).Name;
+                films[i].FilmStudio = _filmStudioRepository.GetFilmStudioByID(filmsDto[i].FilmStudioID).Name;
+                var actorsFilm = _actorRepository.GetActorByFilmIDs(new List<int>() { films[i].FilmID });
+                films[i].actors = actorsFilm;
+            }
+
+            return films;
         }
     }
 }

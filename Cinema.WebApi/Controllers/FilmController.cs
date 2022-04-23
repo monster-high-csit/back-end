@@ -2,6 +2,7 @@
 using Cinema.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Cinema.WebApi.Controllers
 {
@@ -15,6 +16,14 @@ namespace Cinema.WebApi.Controllers
         {
             _logger = logger;
             _filmService = filmService;
+        }
+
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            List<Film> films = new List<Film>(_filmService.GetFilms());
+            return Ok(films);
         }
 
         [HttpGet("{id}")]

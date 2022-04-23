@@ -6,7 +6,7 @@ namespace Cinema.Helpers
     {
         public static bool ConsistOnlyFIO(this string value)
         {
-            return (Regex.IsMatch(value, @"^([a-zA-Z-]+\b( )?)+$)"));
+            return (Regex.IsMatch(value, @"^([a-zA-Z-]+\b( )?)+$"));
         }
     }
 }

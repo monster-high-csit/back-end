@@ -1,4 +1,5 @@
 ﻿using Cinema.Dto;
+using System.Collections.Generic;
 
 namespace Cinema.IRepositories
 {
@@ -7,5 +8,6 @@ namespace Cinema.IRepositories
         FilmDto GetFilm(int id);
         int DeleteFilm(int id);
         void CreateFilm(FilmDto filmDto);
+        List<FilmDto> GetFilms();
     }
 }

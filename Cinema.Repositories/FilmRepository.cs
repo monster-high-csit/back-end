@@ -3,6 +3,7 @@ using Cinema.Entities;
 using Cinema.IRepositories;
 using Dapper;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -76,6 +77,25 @@ namespace Cinema.Repositories
                             "f.Duration "+
                             "FROM Films AS f WHERE FilmID = @FilmID";
                 return db.Query<FilmDto>(query, param).First();
+            }
+        }
+
+        public List<FilmDto> GetFilms()
+        {
+            using (IDbConnection db = new SqlConnection(_dbOptions.ConnectionString))
+            {
+                var query = "SELECT f.FilmID, " +
+                            "f.Name, " +
+                            "f.GenreID, " +
+                            "f.StudioID AS FilmStudioID, " +
+                            "f.FilmmakerID, " +
+                            "f.AgeLimit, " +
+                            "f.Description, " +
+                            "f.ShortDescription, " +
+                            "f.Rating, " +
+                            "f.Duration " +
+                            "FROM Films AS f";
+                return db.Query<FilmDto>(query).ToList();
             }
         }
     }
