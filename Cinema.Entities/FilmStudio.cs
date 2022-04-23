@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Cinema.Entities
 {
@@ -10,6 +6,8 @@ namespace Cinema.Entities
     {
         public int StudioID { get; set; }
 
+        [StringLength(100, ErrorMessage = "Length is bigger than 100.")]
+        [Required]
         public string Name { get; set; }
     }
 }
