@@ -22,7 +22,6 @@ namespace Cinema.WebApi
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
@@ -38,12 +37,19 @@ namespace Cinema.WebApi
             services.AddSingleton(mapper);
 
             services.AddTransient<IFilmService, FilmService>();
-            services.AddTransient<IActorService, ActorService>();
-
+            
             services.AddTransient<IFilmRepository, FilmRepository>();
+
+            services.AddTransient<IActorService, ActorService>();
             services.AddTransient<IActorRepository, ActorRepository>();
+
+            services.AddTransient<IFilmMakersService, FilmMakerService>();
             services.AddTransient<IFilmMakersRepository, FilmMakersRepository>();
+
+            services.AddTransient<IFilmStudioService, FilmStudioService>();
             services.AddTransient<IFilmStudioRepository, FilmStudioRepository>();
+
+            services.AddTransient<IGenreService, GenreService>();
             services.AddTransient<IGenreRepository, GenreRepository>();
 
             services.AddSwaggerGen(c =>
