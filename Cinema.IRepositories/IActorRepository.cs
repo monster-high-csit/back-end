@@ -7,6 +7,8 @@ namespace Cinema.IRepositories
     {
         Actor GetActor(int id);
         List<Actor> GetActorByFilmIDs(IEnumerable<int> IDs);
-        int Add(Actor actor);
+        int CreateActor(Actor actor);
+        List<Actor> GetActors();
+        int DeleteActor(int id);
     }
 }

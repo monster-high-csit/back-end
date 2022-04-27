@@ -2,6 +2,7 @@
 using Cinema.IRepositories;
 using Dapper;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -28,6 +29,16 @@ namespace Cinema.Repositories
             }
         }
 
+        public int DeleteFilmStudio(int id)
+        {
+            using (SqlConnection db = new SqlConnection(_dbOptions.ConnectionString))
+            {
+                var command = new SqlCommand($"DELETE FROM [dbo].FilmStudios WHERE StudioID = {id}", db);
+                db.Open();
+                return (int)command.ExecuteNonQuery();
+            }
+        }
+
         public FilmStudio GetFilmStudioByID(int id)
         {
             var query = $"SELECT * FROM [dbo].FilmStudios WHERE StudioID = {id}";
@@ -43,6 +54,15 @@ namespace Cinema.Repositories
             using (IDbConnection db = new SqlConnection(_dbOptions.ConnectionString))
             {
                 return db.Query<int>(query, name).ToList().First();
+            }
+        }
+
+        public List<FilmStudio> GetFilmStudios()
+        {
+            var query = $"SELECT * FROM [dbo].FilmStudios";
+            using (IDbConnection db = new SqlConnection(_dbOptions.ConnectionString))
+            {
+                return db.Query<FilmStudio>(query).ToList();
             }
         }
     }

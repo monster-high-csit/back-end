@@ -2,6 +2,7 @@
 using Cinema.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Cinema.WebApi.Controllers
 {
@@ -17,11 +18,43 @@ namespace Cinema.WebApi.Controllers
             _filmMakerService = filmMakerService;
         }
 
+        [HttpGet]
+        public IActionResult Get()
+        {
+            List<FilmMaker> filmMakers = new List<FilmMaker>(_filmMakerService.GetFilmMakers());
+            return Ok(filmMakers);
+        }
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             FilmMaker filmMaker = _filmMakerService.GetFilmMakerByID(id);
             return Ok(filmMaker);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            int result = _filmMakerService.DeleteFilmMaker(id);
+            if (result == 0)
+            {
+                return BadRequest("ERROR! FilmMaker isn't deleted");
+            }
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult Create(FilmMaker filmMaker)
+        {
+            try
+            {
+                //create filmmaker
+                return Ok();
+            }
+            catch
+            {
+                return Problem();
+            }
         }
     }
 }

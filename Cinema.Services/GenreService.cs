@@ -3,6 +3,7 @@ using Cinema.Entities;
 using Cinema.IRepositories;
 using Cinema.IServices;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Cinema.Services
 {
@@ -21,6 +22,11 @@ namespace Cinema.Services
             return _genreRepository.Add(genre);
         }
 
+        public int DeleteGenre(int id)
+        {
+            return _genreRepository.DeleteGenre(id);
+        }
+
         public Genre GetGenreByID(int id)
         {
             return _genreRepository.GetGenreByID(id);
@@ -29,6 +35,11 @@ namespace Cinema.Services
         public int GetGenreIDByName(string name)
         {
             return _genreRepository.GetGenreIDByName(name);
+        }
+
+        public List<Genre> GetGenres()
+        {
+            return _genreRepository.GetGenres();
         }
     }
 }

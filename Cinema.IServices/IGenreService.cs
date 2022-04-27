@@ -1,4 +1,5 @@
 ﻿using Cinema.Entities;
+using System.Collections.Generic;
 
 namespace Cinema.IServices
 {
@@ -7,5 +8,7 @@ namespace Cinema.IServices
         Genre GetGenreByID(int id);
         int Add(Genre genre);
         int GetGenreIDByName(string name);
+        List<Genre> GetGenres();
+        int DeleteGenre(int id);
     }
 }

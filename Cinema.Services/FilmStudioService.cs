@@ -3,6 +3,7 @@ using Cinema.Entities;
 using Cinema.IRepositories;
 using Cinema.IServices;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Cinema.Services
 {
@@ -21,6 +22,11 @@ namespace Cinema.Services
             return _filmStudioRepository.Add(filmStudio);
         }
 
+        public int DeleteFilmStudio(int id)
+        {
+            return _filmStudioRepository.DeleteFilmStudio(id);
+        }
+
         public FilmStudio GetFilmStudioByID(int id)
         {
             return _filmStudioRepository.GetFilmStudioByID(id);
@@ -29,6 +35,11 @@ namespace Cinema.Services
         public int GetFilmStudioIDByName(string name)
         {
             return _filmStudioRepository.GetFilmStudioIDByName(name);
+        }
+
+        public List<FilmStudio> GetFilmStudios()
+        {
+            return _filmStudioRepository.GetFilmStudios();
         }
     }
 }

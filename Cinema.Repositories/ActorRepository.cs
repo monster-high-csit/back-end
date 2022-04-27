@@ -20,9 +20,43 @@ namespace Cinema.Repositories
             _dbOptions = dbOptions;
         }
 
-        public int Add(Actor actor)
+        public int CreateActor(Actor actor)
         {
-            throw new System.NotImplementedException();
+            using (IDbConnection db = new SqlConnection(_dbOptions.ConnectionString))
+            {
+                //Добавить querry
+                var query = "INSERT INTO [dbo].[A] " +
+                            "([GenreID], " +
+                            "[StudioID], " +
+                            "[FilmmakerID], " +
+                            "[Name], " +
+                            "[AgeLimit], " +
+                            "[Description], " +
+                            "[ShortDescription], " +
+                            "[Rating], " +
+                            "[Duration]) " +
+                            "VALUES " +
+                            "(@GenreID, " +
+                            "@StudioID, " +
+                            "@FilmmakerID, " +
+                            "@Name, " +
+                            "@AgeLimit, " +
+                            "@Description, " +
+                            "@ShortDescription, " +
+                            "@Rating," +
+                            "@Duration)";
+                return db.Query(query, actor).Count();
+            };
+        }
+
+        public int DeleteActor(int id)
+        {
+            using (SqlConnection db = new SqlConnection(_dbOptions.ConnectionString))
+            {
+                var command = new SqlCommand($"DELETE FROM dbo.Actors WHERE ActorID = {id}", db);
+                db.Open();
+                return (int)command.ExecuteNonQuery();
+            }
         }
 
         public Actor GetActor(int id)
@@ -48,6 +82,15 @@ namespace Cinema.Repositories
                 return db.Query<Actor>("GetActorByFilmIDs",
                         new { IDs = dt.AsTableValuedParameter("dtIntEntity") },
                         commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public List<Actor> GetActors()
+        {
+            using (IDbConnection db = new SqlConnection(_dbOptions.ConnectionString))
+            {
+                var query = "SELECT * FROM dbo.Actors";
+                return db.Query<Actor>(query).ToList();
             }
         }
     }

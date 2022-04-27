@@ -2,6 +2,7 @@
 using Cinema.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Cinema.WebApi.Controllers
 {
@@ -17,11 +18,43 @@ namespace Cinema.WebApi.Controllers
             _actorService = actorService;
         }
 
+        [HttpGet]
+        public IActionResult Get()
+        {
+            List<Actor> actors = new List<Actor>(_actorService.GetActors());
+            return Ok(actors);
+        }
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             Actor actor = _actorService.GetActor(id);
             return Ok(actor);
+        }
+
+        [HttpPost]
+        public IActionResult Create(Actor actor)
+        {
+            try
+            {
+                _actorService.CreateActor(actor);
+                return Ok();
+            }
+            catch
+            {
+                return Problem();
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            int result = _actorService.DeleteActor(id);
+            if (result == 0)
+            {
+                return BadRequest("ERROR! Actor isn't deleted");
+            }
+            return Ok();
         }
     }
 }

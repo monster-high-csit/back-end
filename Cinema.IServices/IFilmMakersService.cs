@@ -1,5 +1,6 @@
 ﻿
 using Cinema.Entities;
+using System.Collections.Generic;
 
 namespace Cinema.IServices
 {
@@ -8,5 +9,7 @@ namespace Cinema.IServices
         FilmMaker GetFilmMakerByID(int id);
         int Add(FilmMaker filmMaker);
         int GetFilmStudioIDByName(string name, string surname);
+        List<FilmMaker> GetFilmMakers();
+        int DeleteFilmMaker(int id);
     }
 }
