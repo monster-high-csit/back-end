@@ -45,16 +45,5 @@ namespace Cinema.WebApi.Controllers
                 return Problem();
             }
         }
-
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            int result = _actorService.DeleteActor(id);
-            if (result == 0)
-            {
-                return BadRequest("ERROR! Actor isn't deleted");
-            }
-            return Ok();
-        }
     }
 }

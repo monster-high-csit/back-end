@@ -32,17 +32,6 @@ namespace Cinema.WebApi.Controllers
             return Ok(genre);
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            int result = _genreService.DeleteGenre(id);
-            if (result == 0)
-            {
-                return BadRequest("ERROR! Genre isn't deleted");
-            }
-            return Ok();
-        }
-
         [HttpPost]
         public IActionResult Create(Genre genre)
         {

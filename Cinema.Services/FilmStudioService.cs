@@ -22,11 +22,6 @@ namespace Cinema.Services
             return _filmStudioRepository.Add(filmStudio);
         }
 
-        public int DeleteFilmStudio(int id)
-        {
-            return _filmStudioRepository.DeleteFilmStudio(id);
-        }
-
         public FilmStudio GetFilmStudioByID(int id)
         {
             return _filmStudioRepository.GetFilmStudioByID(id);

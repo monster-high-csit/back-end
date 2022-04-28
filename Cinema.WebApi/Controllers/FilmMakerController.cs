@@ -32,17 +32,6 @@ namespace Cinema.WebApi.Controllers
             return Ok(filmMaker);
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            int result = _filmMakerService.DeleteFilmMaker(id);
-            if (result == 0)
-            {
-                return BadRequest("ERROR! FilmMaker isn't deleted");
-            }
-            return Ok();
-        }
-
         [HttpPost]
         public IActionResult Create(FilmMaker filmMaker)
         {

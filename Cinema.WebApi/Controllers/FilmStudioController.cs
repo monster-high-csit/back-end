@@ -32,17 +32,6 @@ namespace Cinema.WebApi.Controllers
             return Ok(filmStudio);
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            int result = _filmStudioService.DeleteFilmStudio(id);
-            if (result == 0)
-            {
-                return BadRequest("ERROR! FilmStudio isn't deleted");
-            }
-            return Ok();
-        }
-
         [HttpPost]
         public IActionResult Create(FilmStudio filmStudio)
         {

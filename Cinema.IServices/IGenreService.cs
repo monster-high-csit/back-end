@@ -9,6 +9,5 @@ namespace Cinema.IServices
         int Add(Genre genre);
         int GetGenreIDByName(string name);
         List<Genre> GetGenres();
-        int DeleteGenre(int id);
     }
 }

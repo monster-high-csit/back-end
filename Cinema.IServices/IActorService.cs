@@ -9,6 +9,5 @@ namespace Cinema.IServices
         List<Actor> GetActorByFilmIDs(IEnumerable<int> IDs);
         List<Actor> GetActors();
         int CreateActor(Actor actor);
-        int DeleteActor(int id);
     }
 }

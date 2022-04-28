@@ -22,11 +22,6 @@ namespace Cinema.Services
             return _genreRepository.Add(genre);
         }
 
-        public int DeleteGenre(int id)
-        {
-            return _genreRepository.DeleteGenre(id);
-        }
-
         public Genre GetGenreByID(int id)
         {
             return _genreRepository.GetGenreByID(id);

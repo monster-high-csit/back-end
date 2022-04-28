@@ -21,11 +21,6 @@ namespace Cinema.Services
             return _actorRepository.CreateActor(actor);
         }
 
-        public int DeleteActor(int id)
-        {
-            return _actorRepository.DeleteActor(id);
-        }
-
         public Actor GetActor(int id)
         {
             return _actorRepository.GetActor(id);

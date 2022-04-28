@@ -10,6 +10,5 @@ namespace Cinema.IServices
         int Add(FilmMaker filmMaker);
         int GetFilmStudioIDByName(string name, string surname);
         List<FilmMaker> GetFilmMakers();
-        int DeleteFilmMaker(int id);
     }
 }

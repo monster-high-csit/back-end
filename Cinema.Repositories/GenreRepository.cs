@@ -29,16 +29,6 @@ namespace Cinema.Repositories
             }
         }
 
-        public int DeleteGenre(int id)
-        {
-            using (SqlConnection db = new SqlConnection(_dbOptions.ConnectionString))
-            {
-                var command = new SqlCommand($"DELETE FROM [dbo].Genres WHERE GenreID = {id}", db);
-                db.Open();
-                return (int)command.ExecuteNonQuery();
-            }
-        }
-
         public Genre GetGenreByID(int id)
         {
             var query = $"SELECT * FROM [dbo].Genres WHERE GenreID = {id}";

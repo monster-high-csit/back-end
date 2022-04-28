@@ -22,11 +22,6 @@ namespace Cinema.Services
             return _filmMakerRepository.Add(filmMaker);
         }
 
-        public int DeleteFilmMaker(int id)
-        {
-            return _filmMakerRepository.DeleteFilmMaker(id);
-        }
-
         public FilmMaker GetFilmMakerByID(int id)
         {
             return _filmMakerRepository.GetFilmMakerByID(id);

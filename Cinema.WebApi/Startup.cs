@@ -52,6 +52,12 @@ namespace Cinema.WebApi
             services.AddTransient<IGenreService, GenreService>();
             services.AddTransient<IGenreRepository, GenreRepository>();
 
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IUserRepository, UserRepository>();
+
+            services.AddTransient<IHallService, HallService>();
+            services.AddTransient<IHallRepository, HallRepository>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });

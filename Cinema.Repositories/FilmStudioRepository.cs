@@ -29,16 +29,6 @@ namespace Cinema.Repositories
             }
         }
 
-        public int DeleteFilmStudio(int id)
-        {
-            using (SqlConnection db = new SqlConnection(_dbOptions.ConnectionString))
-            {
-                var command = new SqlCommand($"DELETE FROM [dbo].FilmStudios WHERE StudioID = {id}", db);
-                db.Open();
-                return (int)command.ExecuteNonQuery();
-            }
-        }
-
         public FilmStudio GetFilmStudioByID(int id)
         {
             var query = $"SELECT * FROM [dbo].FilmStudios WHERE StudioID = {id}";

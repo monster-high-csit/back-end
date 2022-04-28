@@ -29,16 +29,6 @@ namespace Cinema.Repositories
             }
         }
 
-        public int DeleteFilmMaker(int id)
-        {
-            using (SqlConnection db = new SqlConnection(_dbOptions.ConnectionString))
-            {
-                var command = new SqlCommand($"DELETE FROM dbo.Filmmakers WHERE FilmmakerID = {id}", db);
-                db.Open();
-                return (int)command.ExecuteNonQuery();
-            }
-        }
-
         public FilmMaker GetFilmMakerByID(int id)
         {
             using (IDbConnection db = new SqlConnection(_dbOptions.ConnectionString))

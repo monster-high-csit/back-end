@@ -24,39 +24,11 @@ namespace Cinema.Repositories
         {
             using (IDbConnection db = new SqlConnection(_dbOptions.ConnectionString))
             {
-                //Добавить querry
-                var query = "INSERT INTO [dbo].[A] " +
-                            "([GenreID], " +
-                            "[StudioID], " +
-                            "[FilmmakerID], " +
-                            "[Name], " +
-                            "[AgeLimit], " +
-                            "[Description], " +
-                            "[ShortDescription], " +
-                            "[Rating], " +
-                            "[Duration]) " +
-                            "VALUES " +
-                            "(@GenreID, " +
-                            "@StudioID, " +
-                            "@FilmmakerID, " +
-                            "@Name, " +
-                            "@AgeLimit, " +
-                            "@Description, " +
-                            "@ShortDescription, " +
-                            "@Rating," +
-                            "@Duration)";
+                var query = "INSERT INTO [dbo].[Actors] " +
+                    "([Name], [Surname]) " +
+                    "VALUES (@Name,@Surname)";
                 return db.Query(query, actor).Count();
             };
-        }
-
-        public int DeleteActor(int id)
-        {
-            using (SqlConnection db = new SqlConnection(_dbOptions.ConnectionString))
-            {
-                var command = new SqlCommand($"DELETE FROM dbo.Actors WHERE ActorID = {id}", db);
-                db.Open();
-                return (int)command.ExecuteNonQuery();
-            }
         }
 
         public Actor GetActor(int id)
