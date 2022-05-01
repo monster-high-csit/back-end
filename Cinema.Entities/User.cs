@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cinema.Helpers;
+using System;
 
 namespace Cinema.Entities
 {
@@ -10,7 +11,22 @@ namespace Cinema.Entities
         public string Patronymic { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
+
+        private string _password;
+        public string Password
+        {
+            get
+            {
+                return _password;
+            }
+            set
+            {
+                _password = value.GetSHA512Code();
+            }
+        }
+
+        public string Role { get; set; }
+
         public DateTime Birthday { get; set; }
     }
 }
