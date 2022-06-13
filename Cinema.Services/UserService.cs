@@ -16,9 +16,19 @@ namespace Cinema.Services
             _userRepository = userRepository;
         }
 
+        public User GetUser(string login)
+        {
+            return _userRepository.GetUser(login);
+        }
+
         public List<User> GetUsers()
         {
             return _userRepository.GetUsers();
+        }
+
+        public bool LoginUser(User user)
+        {
+            return _userRepository.LoginUser(user);
         }
     }
 }
